@@ -490,6 +490,14 @@ function Object.highlightOff() end
 ---@return true
 function Object.highlightOn(color, duration) end
 
+---@param put_object tts__Object
+---@return tts__Container
+function Object.putObject(put_object) end
+
+---@param players tts__PlayerColor[]
+---@return boolean
+function Object.setInvisibleTo(players) end
+
 ---Returns if the object is presently smooth moving, false, otherwise.
 ---@return boolean
 function Object.isSmoothMoving() end
