@@ -188,7 +188,13 @@ local Token
 
 ---@param parameters tts__CreateButtonParameters
 function Object.createButton(parameters) end
----
+
+---  Counts down from the top of the stack the given number items, creating a new stack of that size, leaving the
+---  remainder of the items in the original stack. After the cut, the resulting stacks must each have at least 2 items.
+---@param count number @How many items down to cut off the stack
+---@return table<number,tts__Object> @[1] - remaining items, [2] - cut items.
+function Object.cut(count) end
+
 --- If the object is a bag, deck or stack, deals an object from within to the specified player hand.
 ---
 ---@overload fun(count: number)
