@@ -448,6 +448,11 @@ function Object.getRotationValue() end
 ---@return tts__Vector
 function Object.getScale() end
 
+---
+--- Returns a Vector of the forward direction of this object.
+---@return tts__Vector
+function Object.getTransformForward() end
+
 ---@shape tts__Object_SnapPoint
 ---@field position tts__Vector @Position of the snap point. The position is relative to the object's center (a local position).
 ---@field rotation tts__Vector @Rotation of the snap point. The rotation is relative to the object's rotation (a local rotation).
