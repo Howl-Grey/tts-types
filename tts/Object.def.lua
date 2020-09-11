@@ -541,6 +541,11 @@ function Object.scale(scale) end
 --- @return boolean
 function Object.setCustomObject(parameters) end
 
+--- Input a string as an entity's Lua script.
+--- @param script string
+--- @return boolean
+function Object.setLuaScript( script)end
+
 --- Sets whether the object is locked/frozen in place.
 ---
 ---@param lock boolean
