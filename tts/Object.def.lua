@@ -528,7 +528,7 @@ function Object.jointTo(object, parameters) end
 ---@param index number @button index for this object, starting at 0
 ---@return boolean
 function Object.removeButton(index) end
----
+
 --- Scales the object by the specified multiplier(s), relative to the object's existing scale.
 ---
 ---@overload fun(scale: tts__VectorShape): true
@@ -536,7 +536,11 @@ function Object.removeButton(index) end
 ---@return true
 function Object.scale(scale) end
 
----
+--- Sets a custom Object's properties.
+--- @param parameters tts__Object_ModelCustomObject
+--- @return boolean
+function Object.setCustomObject(parameters) end
+
 --- Sets whether the object is locked/frozen in place.
 ---
 ---@param lock boolean
