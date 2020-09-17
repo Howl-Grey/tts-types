@@ -9,9 +9,11 @@ UI = {}
 
 
 ---@alias tts__UILayoutElement_Tag "HorizontalLayout" | "VerticalLayout"
+---@alias tts__UIScrollView_Tag "HorizontalScrollView" | "VerticalScrollView"
+---@alias tts__UIScrollViewElement tts__UIHorizontalScrollViewElement_Attributes | tts__UIVerticalScrollViewElement
 ---@alias tts__UILayoutElement tts__UIHorizontalLayoutElement | tts__UIVerticalLayoutElement
----@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | "Button" | "Panel" | "Text"
----@alias tts__UIElement tts__UILayoutElement | tts__UIButtonElement | tts__UIPanelElement | tts__UITextElement
+---@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_tag | "Button" | "Panel" | "Text"
+---@alias tts__UIElement tts__UILayoutElement | tts__UIScrollViewElement | tts__UIButtonElement | tts__UIPanelElement | tts__UITextElement
 
 
 ---@alias tts__UIElement_Alignment "UpperLeft" | "UpperCenter" | "UpperRight" | "MiddleLeft" | "MiddleCenter" | "MiddleRight" | "LowerLeft" | "LowerCenter" | "LowerRight"
@@ -22,10 +24,12 @@ UI = {}
 ---@alias tts__UIElement_FontStyle "Normal" | "Bold" | "Italic" | "BoldItalic"
 ---@alias tts__UIElement_IconAlignment "Left" | "Right"
 ---@alias tts__UIElement_Id string
+---@alias tts__UIElement_MovementType "Unrestricted" | "Elastic" | "Clamped"
 ---@alias tts__UIElement_Navigation "None" | "Horizontal" | "Vertical" | "Automatic" | "Explicit"
 ---@alias tts__UIElement_Number number | string
 ---@alias tts__UIElement_Padding string
 ---@alias tts__UIElement_Percentage string
+---@alias tts__UIElement_ScrollbarVisibility "Permanent" | "AutoHide" | "AutoHideAndExpandViewport"
 ---@alias tts__UIElement_Vector2 string
 ---@alias tts__UIElement_Vector3 string
 
@@ -47,6 +51,7 @@ UI = {}
 ---@field id nil | tts__UIElement_Id
 ---@field name nil | string
 ---@field class nil | string @Space separated list of class names
+---@field color nil | tts__UIElement_Color
 ---@field active nil | tts__UIElement_Boolean @Default true
 ---@field raycastTarget nil | tts__UIElement_Boolean @Default true
 ---@field onClick nil | tts__UIElement_CallbackFunctionName @Unless you provide your own parameter as part of the name, the callback is passed "-1" (Left), "-2" (Right) or "-3" (Middle) as the value.
@@ -148,6 +153,31 @@ UI = {}
 ---@field scrollbarBackgroundImage nil | tts__UIAssetName
 ---@field scrollSensitivity nil | number @Default 1.0. A factor/multiplier to augment the scroll speed.
 ---@field itemHeight nil | number
+
+---@shape tts_UIHorizontalOrVerticalScrollViewElement_Attributes : tts__UIElementBase_Attributes
+---@field horizontal nil | tts__UIElement_Boolean @Default true for HorizontalScrollView
+---@field vertical nil | tts__UIElement_Boolean @Default true for VerticalScrollView
+---@field movementType nil | tts__UIElement_MovementType @Default "Clamped"
+---@field elasticity nil | tts__UIElement_Number @Default 0.1
+---@field inertia nil | tts__UIElement_Boolean @Default true
+---@field decelerationRate nil | tts__UIElement_Number @Default 0.135
+---@field scrollSensitivity nil | tts__UIElement_Number @Default 1
+---@field horizontalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
+---@field verticalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
+---@field noScrollbars nil | tts__UIElement_Boolean @Default false
+---@field scrollbarBackgroundColor nil | tts__UIElement_Color @Default "#FFFFFF"
+---@field scrollbarColors nil | tts__UIElement_ColorBlock @Default "#FFFFFF|#FFFFFF|#C8C8C8|rgba(0.78,0.78,0.78,0.5)"
+---@field scrollbarImage nil | tts__UIAssetName
+
+---@shape tts__UIHorizontalScrollViewElement_Attributes : tts__UIHorizontalOrVerticalScrollViewElement_Attributes
+
+---@shape tts__UIHorizontalScrollViewElement : tts__UIInputElementBase
+---@field attributes tts__UIHorizontalScrollViewElement_Attributes
+
+---@shape tts__UIVerticalScrollViewElement_Attributes : tts__UIHorizontalOrVerticalScrollViewElement_Attributes
+
+---@shape tts__UIVerticalScrollViewElement : tts__UIInputElementBase
+---@field attributes tts__UIVerticalScrollViewElement_Attributes
 
 ---@alias tts__UITextElement_HorizontalOverflow "Wrap" | "Overflow"
 ---@alias tts__UITextElement_VerticalOverflow "Truncate" | "Overflow"
