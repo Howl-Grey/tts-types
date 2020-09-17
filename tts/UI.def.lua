@@ -12,7 +12,7 @@ UI = {}
 ---@alias tts__UIScrollView_Tag "HorizontalScrollView" | "VerticalScrollView"
 ---@alias tts__UIScrollViewElement tts__UIHorizontalScrollViewElement_Attributes | tts__UIVerticalScrollViewElement
 ---@alias tts__UILayoutElement tts__UIHorizontalLayoutElement | tts__UIVerticalLayoutElement
----@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_tag | "Button" | "Panel" | "Text"
+---@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_Tag | "Button" | "Panel" | "Text"
 ---@alias tts__UIElement tts__UILayoutElement | tts__UIScrollViewElement | tts__UIButtonElement | tts__UIPanelElement | tts__UITextElement
 
 
