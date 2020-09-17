@@ -95,6 +95,7 @@ UI = {}
 ---@field selectOnDown nil | tts__UIElement_Id
 ---@field selectOnLeft nil | tts__UIElement_Id
 ---@field selectOnRight nil | tts__UIElement_Id
+---@field tooltip nil | string
 
 ---@shape tts__UIElementBase
 ---@field tag tts__UIElement_Tag
