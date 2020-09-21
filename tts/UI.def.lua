@@ -10,17 +10,19 @@ UI = {}
 
 ---@alias tts__UILayoutElement_Tag "HorizontalLayout" | "VerticalLayout"
 ---@alias tts__UIScrollView_Tag "HorizontalScrollView" | "VerticalScrollView"
----@alias tts__UIScrollViewElement tts__UIHorizontalScrollViewElement_Attributes | tts__UIVerticalScrollViewElement
+---@alias tts__UIScrollViewElement tts__UIHorizontalScrollViewElement | tts__UIVerticalScrollViewElement
 ---@alias tts__UILayoutElement tts__UIHorizontalLayoutElement | tts__UIVerticalLayoutElement
----@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_Tag | "Button" | "Panel" | "Text"
+---@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_Tag | "Button" | "Panel" | "Text" | "GridLayout"
 ---@alias tts__UIElement tts__UILayoutElement | tts__UIScrollViewElement | tts__UIButtonElement | tts__UIPanelElement | tts__UITextElement
 
-
 ---@alias tts__UIElement_Alignment "UpperLeft" | "UpperCenter" | "UpperRight" | "MiddleLeft" | "MiddleCenter" | "MiddleRight" | "LowerLeft" | "LowerCenter" | "LowerRight"
+---@alias tts__UIElement_Axis "Horizontal" | "Vertical"
 ---@alias tts__UIElement_Boolean boolean | "true" | "false" | "1" | "0" | 1 | 0
 ---@alias tts__UIElement_Color string
 ---@alias tts__UIElement_ColorBlock string
+---@alias tts__UIElement_Constraint "Flexible" | "FixedColumnCount" | "FixedRowCount"
 ---@alias tts__UIElement_ContentSizeFit "vertical" | "horizontal" | "both" | "none"
+---@alias tts__UIElement_Corner "UpperLeft" | "UpperRight" | "LowerLeft" | "LowerRight"
 ---@alias tts__UIElement_FontStyle "Normal" | "Bold" | "Italic" | "BoldItalic"
 ---@alias tts__UIElement_IconAlignment "Left" | "Right"
 ---@alias tts__UIElement_Id string
@@ -155,31 +157,6 @@ UI = {}
 ---@field scrollSensitivity nil | number @Default 1.0. A factor/multiplier to augment the scroll speed.
 ---@field itemHeight nil | number
 
----@shape tts_UIHorizontalOrVerticalScrollViewElement_Attributes : tts__UIElementBase_Attributes
----@field horizontal nil | tts__UIElement_Boolean @Default true for HorizontalScrollView
----@field vertical nil | tts__UIElement_Boolean @Default true for VerticalScrollView
----@field movementType nil | tts__UIElement_MovementType @Default "Clamped"
----@field elasticity nil | tts__UIElement_Number @Default 0.1
----@field inertia nil | tts__UIElement_Boolean @Default true
----@field decelerationRate nil | tts__UIElement_Number @Default 0.135
----@field scrollSensitivity nil | tts__UIElement_Number @Default 1
----@field horizontalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
----@field verticalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
----@field noScrollbars nil | tts__UIElement_Boolean @Default false
----@field scrollbarBackgroundColor nil | tts__UIElement_Color @Default "#FFFFFF"
----@field scrollbarColors nil | tts__UIElement_ColorBlock @Default "#FFFFFF|#FFFFFF|#C8C8C8|rgba(0.78,0.78,0.78,0.5)"
----@field scrollbarImage nil | tts__UIAssetName
-
----@shape tts__UIHorizontalScrollViewElement_Attributes : tts__UIHorizontalOrVerticalScrollViewElement_Attributes
-
----@shape tts__UIHorizontalScrollViewElement : tts__UIInputElementBase
----@field attributes tts__UIHorizontalScrollViewElement_Attributes
-
----@shape tts__UIVerticalScrollViewElement_Attributes : tts__UIHorizontalOrVerticalScrollViewElement_Attributes
-
----@shape tts__UIVerticalScrollViewElement : tts__UIInputElementBase
----@field attributes tts__UIVerticalScrollViewElement_Attributes
-
 ---@alias tts__UITextElement_HorizontalOverflow "Wrap" | "Overflow"
 ---@alias tts__UITextElement_VerticalOverflow "Truncate" | "Overflow"
 
@@ -204,13 +181,49 @@ UI = {}
 ---@shape tts__UIPanelElement : tts__UILayoutElementBase
 ---@field tag "Panel"
 
-
 ---@shape tts__UILayoutElementBase_Attributes : tts__UIElementBase_Attributes
 ---@field childAlignment nil | tts__UIElement_Alignment
 ---@field padding nil | tts__UIElement_Padding
 
 ---@shape tts__UILayoutElementBase : tts__UIElementBase
 ---@field attributes nil | tts__UILayoutElementBase_Attributes
+
+---@shape tts__UIGridLayoutElement_Attributes : tts__UILayoutElementBase_Attributes
+---@field padding nil | tts__UIElement_Padding
+---@field spacing nil | tts__UIElement_Vector2
+---@field cellSize nil | tts__UIElement_Vector2
+---@field startCorner nil | tts__UIElement_Corner
+---@field startAxis nil | tts__UIElement_Axis
+---@field childAlignment nil | tts__UIElement_Alignment
+---@field constraint nil | tts__UIElement_Constraint
+---@field constraintCount nil | tts__UIElement_Number
+
+---@shape tts__UIGridLayoutElement : tts__UILayoutElementBase
+---@field tag "GridLayout"
+---@field attributes tts__UIGridLayoutElement_Attributes
+
+
+---@shape tts_UIHorizontalOrVerticalScrollViewElement_Attributes : tts__UILayoutElementBase_Attributes
+---@field id nil | tts__UIElement_Id
+---@field horizontal nil | tts__UIElement_Boolean @Default true for HorizontalScrollView
+---@field vertical nil | tts__UIElement_Boolean @Default true for VerticalScrollView
+---@field movementType nil | tts__UIElement_MovementType @Default "Clamped"
+---@field elasticity nil | tts__UIElement_Number @Default 0.1
+---@field inertia nil | tts__UIElement_Boolean @Default true
+---@field decelerationRate nil | tts__UIElement_Number @Default 0.135
+---@field scrollSensitivity nil | tts__UIElement_Number @Default 1
+---@field horizontalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
+---@field verticalScrollbarVisibility nil | tts__UIElement_ScrollbarVisibility
+---@field noScrollbars nil | tts__UIElement_Boolean @Default false
+---@field scrollbarBackgroundColor nil | tts__UIElement_Color @Default "#FFFFFF"
+---@field scrollbarColors nil | tts__UIElement_ColorBlock @Default "#FFFFFF|#FFFFFF|#C8C8C8|rgba(0.78,0.78,0.78,0.5)"
+---@field scrollbarImage nil | tts__UIAssetName
+
+---@shape tts__UIHorizontalScrollViewElement : tts__UILayoutElementBase
+---@field attributes tts_UIHorizontalOrVerticalScrollViewElement_Attributes
+
+---@shape tts__UIVerticalScrollViewElement : tts__UILayoutElementBase
+---@field attributes tts_UIHorizontalOrVerticalScrollViewElement_Attributes
 
 ---@shape tts__UIHorizontalOrVerticalLayoutElementBase_Attributes : tts__UILayoutElementBase_Attributes
 ---@field spacing nil | tts__UIElement_Number @Default 0
