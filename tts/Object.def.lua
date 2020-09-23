@@ -473,6 +473,10 @@ function Object.getSnapPoints() end
 ---@return number
 function Object.getQuantity() end
 
+---@param name string @Variable in the Object's script.
+---@return any @Data value of a variable in the Object's script.
+function Object.getTable(name) end
+
 ---@param name string
 ---@return any
 function Object.getVar(name) end
@@ -616,6 +620,12 @@ function Object.setRotationSmooth(rotation, collide, fast) end
 ---@return true
 ---@see tts__Object#getRotationValues
 function Object.setRotationValue(value) end
+
+--- Creates/updates a variable in another entity's script. Only used for tables.
+---@param name string
+---@param value any
+---@return true
+function Object.setTable(name, value) end
 
 ---@param name string
 ---@param value any
