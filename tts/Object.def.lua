@@ -67,6 +67,12 @@ local Object
 --- The following are not real types in TTS, but this allows us to strongly type our code where an object of a specific type is required.
 --- NOTE: There is no tts__AssetBundle or tts__Model, because these objects always masquerade as another object type.
 
+---@class tts__TextTool
+local TextTool
+
+---@class tts__3DText : tts__Object
+---@field TextTool tts__TextTool
+
 ---@class tts__Container : tts__Object
 local Container
 
@@ -631,6 +637,33 @@ function Object.setTable(name, value) end
 ---@param value any
 ---@return true
 function Object.setVar(name, value) end
+
+--- Returns the font Color.
+---@return tts__Color
+function TextTool.getFontColor() end
+
+--- Returns the font size.
+---@return number
+function TextTool.getFontSize() end
+
+--- Returns the current text. Works the same as Object's getValue()
+---@return string
+function TextTool.getValue() end
+
+--- Sets font Color.
+---@param font_color tts__Color
+---@return boolean
+function TextTool.setFontColor(font_color) end
+
+--- Sets font size.
+---@param font_size number
+---@return boolean
+function TextTool.setFontSize(font_size) end
+
+--- Sets the current text. Works the same as Object's setValue(...).
+---@param text string
+---@return boolean
+function TextTool.setValue(text) end
 
 ---@shape tts__Object_VectorLineParameters
 ---@field points tts__VectorShape[] @An array of 2 or more points representing a series of line segments from one point to the next.
