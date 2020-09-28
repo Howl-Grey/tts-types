@@ -53,3 +53,8 @@ function printToAll(message, color) end
 ---@return string
 function stringColorToRGB(player_color) end
 
+--- Returns the arc tangent of x/y (in radians), but uses the signs of both parameters to find the quadrant of the result. (It also handles correctly the case of y being zero.)
+---@param x number
+---@param y number
+---@return number
+function math.atan2(x, y) end
