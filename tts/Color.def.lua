@@ -49,6 +49,7 @@ end
 ---@overload fun(): string
 ---@param includeAlpha nil | boolean
 ---@return string
+---@overload fun():string
 function Color:toHex(includeAlpha) end
 
 ---@overload fun(): string
