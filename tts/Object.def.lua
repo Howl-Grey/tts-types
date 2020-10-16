@@ -465,6 +465,11 @@ function Object.getScale() end
 ---@return tts__Vector
 function Object.getTransformForward() end
 
+---
+--- Returns a Vector of the right direction of this object.
+---@return tts__Vector
+function Object.getTransformRight() end
+
 ---@shape tts__Object_SnapPoint
 ---@field position tts__Vector @Position of the snap point. The position is relative to the object's center (a local position).
 ---@field rotation tts__Vector @Rotation of the snap point. The rotation is relative to the object's rotation (a local rotation).
@@ -510,6 +515,10 @@ function Object.highlightOff() end
 ---@param duration number
 ---@return true
 function Object.highlightOn(color, duration) end
+
+---@param vector tts__Vector
+---@return true
+function Object.rotate(vector) end
 
 ---@param put_object tts__Object
 ---@return tts__Container
