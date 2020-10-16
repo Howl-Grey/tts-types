@@ -23,7 +23,7 @@ UI = {}
 ---@alias tts__UIElement_Constraint "Flexible" | "FixedColumnCount" | "FixedRowCount"
 ---@alias tts__UIElement_ContentSizeFit "vertical" | "horizontal" | "both" | "none"
 ---@alias tts__UIElement_Corner "UpperLeft" | "UpperRight" | "LowerLeft" | "LowerRight"
----@alias tts__UIElement_FontStyle "Normal" | "Bold" | "Italic" | "BoldItalic"
+---@alias tts__UIElement_FontStyle "Normal" | "Bold" | "Italic" | "BoldAndItalic"
 ---@alias tts__UIElement_IconAlignment "Left" | "Right"
 ---@alias tts__UIElement_Id string
 ---@alias tts__UIElement_MovementType "Unrestricted" | "Elastic" | "Clamped"
