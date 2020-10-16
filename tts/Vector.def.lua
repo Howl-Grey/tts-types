@@ -15,6 +15,7 @@
 ---@field [1] number
 ---@field [2] number
 ---@field [3] number
+---@overload fun(vector:tts__VectorShape):tts__Vector
 Vector = {}
 
 ---@overload fun(src: tts__VectorShape): tts__Vector
