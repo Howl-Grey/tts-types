@@ -176,7 +176,7 @@ local Token
 ---@alias tts__Object_DealDestination tts__PlayerHandColor | "All" | "Seated"
 
 
----@shape tts__CreateButtonParameters
+---@shape tts__Object_CreateButtonParameters
 ---@field click_function string @A String of the function's name that will be run when button is clicked.
 ---@field function_owner nil | string @The Object which contains the click_function function. Defaults to Global>
 ---@field label nil | string @Text that appears on the button. Defaults to ''.
@@ -192,7 +192,7 @@ local Token
 ---@field press_color nil | tts__ColorShape @A Color for the background when clicked.
 ---@field tooltip nil | string @Popup of text, similar to how an Object's name is displayed on mouseover.  Defaults to ''.
 
----@param parameters tts__CreateButtonParameters
+---@param parameters tts__Object_CreateButtonParameters
 function Object.createButton(parameters) end
 
 ---  Counts down from the top of the stack the given number items, creating a new stack of that size, leaving the
