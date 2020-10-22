@@ -195,6 +195,31 @@ local Token
 ---@param parameters tts__Object_CreateButtonParameters
 function Object.createButton(parameters) end
 
+---@shape tts__Object_EditButtonParameters
+---@field index number @Index of the button you want to edit.
+---@field click_function nil | string @A String of the function's name that will be run when button is clicked.
+---@field function_owner nil | string @The Object which contains the click_function function. Defaults to Global>
+---@field label nil | string @Text that appears on the button. Defaults to ''.
+---@field position nil | tts__VectorShape @Where the button appears, relative to the Object's center.
+---@field rotation nil | tts__VectorShape @How the button is rotated, relative to the Object's rotation. Defaults to {x=0, y=0, z=0}.
+---@field scale nil | tts__VectorShape @Scale of the button, relative to the Object's scale. Defaults to {x=1, y=1, z=1}.
+---@field width nil | number @How wide the button will be, relative to the Object. Defaults to 100.
+---@field height nil | number @How tall the button will be, relative to the Object. Defaults to 100.
+---@field font_size nil | number @Size the label font will be, relative to the Object. Defaults to 100.
+---@field color nil | tts__ColorShape @A Color for the clickable button. Defaults to {r=1, g=1, b=1}.
+---@field font_color nil | tts__ColorShape @A Color for the label text.  Defaults to {r=0, g=0, b=0}.
+---@field hover_color nil | tts__ColorShape @A Color for the background during mouse-over.
+---@field press_color nil | tts__ColorShape @A Color for the background when clicked.
+---@field tooltip nil | string @Popup of text, similar to how an Object's name is displayed on mouseover.  Defaults to ''.
+
+---
+---  Modify an existing button. The only parameter that is required is the index. The rest are optional, and not using
+---    them will cause the edited button's element to remain. Indexes start at 0. The first button on any given Object
+---    has an index of 0, the next button on it has an index of 1, etc. Each Object has its own indexes.
+---
+---@param parameters tts__Object_EditButtonParameters
+function Object.editButton(parameters) end
+
 ---  Counts down from the top of the stack the given number items, creating a new stack of that size, leaving the
 ---  remainder of the items in the original stack. After the cut, the resulting stacks must each have at least 2 items.
 ---@param count number @How many items down to cut off the stack
@@ -211,11 +236,23 @@ function Object.cut(count) end
 ---@return true
 function Object.deal(count, destination, handIndex) end
 
+--- Deals from a deck to a position relative to the hand zone.
+---
+---@param offset tts__VectorShape @The x/y/z offset to deal to around the given hand zone.
+---@param flip boolean
+---@param player_color tts__PlayerColor
+function Object.dealToColorWithOffset(offset, flip, player_color) end
+
 ---
 --- Destroys the underlying Tabletop Simulator object.
 ---
 ---@return boolean
 function Object.destruct() end
+
+---
+--- Flips Object over.
+---@return boolean
+function Object.flip() end
 
 ---
 --- Returns the object's angular velocity, in radians per second.
@@ -547,6 +584,13 @@ function Object.jointTo(object, parameters) end
 ---@param index number @button index for this object, starting at 0
 ---@return boolean
 function Object.removeButton(index) end
+
+---
+--- Resets this Object. Resetting a Deck brings all the Cards back into it. Resetting a Bag clears its contents
+---  (works for both Loot and Infinite Bags).
+---
+---@return boolean
+function Object.reset() end
 
 --- Scales the object by the specified multiplier(s), relative to the object's existing scale.
 ---
