@@ -49,6 +49,9 @@ UI = {}
 --- to the corresponding script context.
 ---@alias tts__UIElement_CallbackFunctionName string
 
+---mouse_button passed is "-1" (Left), "-2" (Right) or "-3" (Middle).
+---@alias tts__UIElement_CallbackAltClick -1 | -2 | -3
+
 ---@shape tts__UIElementBase_Attributes
 ---@field id nil | tts__UIElement_Id
 ---@field name nil | string
