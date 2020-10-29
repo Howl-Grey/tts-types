@@ -544,6 +544,15 @@ function Object.getVectorLines() end
 ---@return tts__Vector
 function Object.getVelocity() end
 
+---
+---Used to call a Lua function on another entity.
+---Var is only returned if the function called has a return. Otherwise return is nil. See example.
+---@param func_name string
+---@param func_params table
+---@return any
+---@overload fun(func_name:string):any
+function Object.call(func_name, func_params) end
+
 ---@return true
 function Object.highlightOff() end
 
