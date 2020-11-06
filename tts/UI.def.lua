@@ -8,10 +8,10 @@ UI = {}
 ---@field url string
 
 
----@alias tts__UILayoutElement_Tag "HorizontalLayout" | "VerticalLayout"
+---@alias tts__UILayoutElement_Tag "HorizontalLayout" | "VerticalLayout" | "TableLayout" | "Row" | "Cell"
 ---@alias tts__UIScrollView_Tag "HorizontalScrollView" | "VerticalScrollView"
 ---@alias tts__UIScrollViewElement tts__UIHorizontalScrollViewElement | tts__UIVerticalScrollViewElement
----@alias tts__UILayoutElement tts__UIHorizontalLayoutElement | tts__UIVerticalLayoutElement
+---@alias tts__UILayoutElement tts__UIHorizontalLayoutElement | tts__UIVerticalLayoutElement | tts__UITableLayoutElement | tts__UITableLayoutCellElement | tts__UITableLayoutRowElement
 ---@alias tts__UIElement_Tag  tts__UILayoutElement_Tag | tts__UIScrollView_Tag | "Button" | "Panel" | "Text" | "GridLayout"
 ---@alias tts__UIElement tts__UILayoutElement | tts__UIScrollViewElement | tts__UIButtonElement | tts__UIPanelElement | tts__UITextElement
 
@@ -89,6 +89,7 @@ UI = {}
 ---@field anchorMax nil | tts__UIElement_Vector2
 ---@field sizeDelta nil | tts__UIElement_Vector2
 ---@field pivot nil | tts__UIElement_Vector2
+---@field position nil | tts__UIElement_Vector3
 ---@field rotation nil | tts__UIElement_Vector3
 ---@field scale nil | tts__UIElement_Vector2
 ---@field offsetMin nil | tts__UIElement_Vector2
@@ -164,6 +165,7 @@ UI = {}
 ---@alias tts__UITextElement_VerticalOverflow "Truncate" | "Overflow"
 
 ---@shape tts__UITextElement_Attributes : tts__UIElementBase_Attributes
+---@field text nil | string @Text to be displayed. Default nil
 ---@field alignment nil | tts__UIElement_Alignment @Default "MiddleCenter"
 ---@field color nil | tts__UIElement_Color
 ---@field font nil | string @Note: At present TTS doesn't really support custom fonts. You can reference a system font name, but each OS has a different font list, so it's probably a bad idea.
@@ -207,7 +209,6 @@ UI = {}
 
 
 ---@shape tts_UIHorizontalOrVerticalScrollViewElement_Attributes : tts__UILayoutElementBase_Attributes
----@field id nil | tts__UIElement_Id
 ---@field horizontal nil | tts__UIElement_Boolean @Default true for HorizontalScrollView
 ---@field vertical nil | tts__UIElement_Boolean @Default true for VerticalScrollView
 ---@field movementType nil | tts__UIElement_MovementType @Default "Clamped"
@@ -242,6 +243,49 @@ UI = {}
 ---@shape tts__UIHorizontalLayoutElement : tts__UIElementBase
 ---@field tag "HorizontalLayout"
 ---@field attributes nil | tts__UIHorizontalLayoutElement_Attributes
+
+---@shape tts__UITableLayoutCellElement_Attributes : tts__UILayoutElementBase_Attributes
+---@field columnSpan nil|number @integer.  Default 1.
+---@field dontUseTableCellBackground nil|boolean @If set to true, then this cell will ignore the tables' cellBackgroundImage and values. Default false.
+---@field overrideGlobalCellPadding nil|boolean @If set to true, then this cell will ignore the tables' cellPadding value. Default false.
+---@field cellBackgroundColor nil|tts__UIElement_Color @Color for this cells background. Default parent table setting.
+---@field padding nil|tts__UIElement_Padding @float(left) float(right) float(top) float(bottom). Default parent table setting.
+---@field childForceExpandWidth nil|boolean @Default true.
+---@field childForceExpandHeight nil|boolean @default true.
+
+---@shape tts__UITableLayoutCellElement : tts__UIElementBase
+---@field tag "Cell"
+---@field attributes tts__UITableLayoutCellElement_Attributes
+
+---@shape tts__UITableLayoutRowElement_Attributes : tts__UILayoutElementBase_Attributes
+---@field preferredHeight nil|number @Sets the height for this row. Use a value of '0' to specify that this row should be auto-sized. Default 0.
+---@field dontUseTableRowBackground nil|boolean @If set to true, then this row will ignore the tables' rowBackgroundImage and rowBackgroundColor values, allowing you to override those values for this row. Default false.
+---@field rowBackgroundImage nil|string @Image to use as the background for this row. Default parent table setting.
+---@field rowBackgroundColor nil|tts__UIElement_Color @Color to use for this rows background. Default parent table setting.
+
+---@shape tts__UITableLayoutRowElement : tts__UILayoutElementBase
+---@field tag "Row"
+---@field attributes nil|tts__UITableLayoutRowElement_Attributes
+---@field children nil|tts__UIElement[]
+
+---@shape tts__UITableLayoutElement_Attributes : tts__UILayoutElementBase_Attributes
+---@field padding nil|tts__UIElement_Padding @float(left) float(right) float(top) float(bottom). Default '0 0 0 0'
+---@field cellSpacing nil|number @Spacing between each cell.  Default 0.
+---@field columnWidths nil|string @(Optional) Space delimited float. Explicitly set the width of each column. Use a value of 0 to auto-size a specific column. Default nil.
+---@field automaticallyAddColumns nil|boolean @If more cells are added to a row than are accounted for by columnWidths, should this TableLayout automatically add one or more new auto-sized entries (0) to columnWidths? Default true.
+---@field automaticallyRemoveEmptyColumns nil|boolean @If there are more entries in columnWidths than there are cells in any row, should this TableLayout automatically remove entries from columnWidths until their are no 'empty' columns? Default true.
+---@field autoCalculateHeight nil|boolean @If set to true, then the height of this TableLayout will automatically be calculated as the sum of each rows preferredHeight value. This option cannot be used without explicitly sized rows. Default false.
+---@field useGlobalCellPadding nil|boolean @If set to true, then all cells will use this TableLayout's cellPadding value. Default true.
+---@field cellPadding nil|boolean @Padding for each cell. float(left) float(right) float(top) float(bottom). Default '0 0 0 0'.
+---@field cellBackgroundImage nil|string @Image to use as the background for each cell. Default nil.
+---@field cellBackgroundColor nil|tts__UIElement_Color @Color for each cells background. Default rgba(1,1,1,0.4).
+---@field rowBackgroundImage nil|string @Image to use as the background for each row. Default nil.
+---@field rowBackgroundColor nil|tts__UIElement_Color @Color to use for each rows background. Default 'clear'.
+
+---@shape tts__UITableLayoutElement : tts__UILayoutElementBase
+---@field tag "TableLayout"
+---@field attributes nil | tts__UITableLayoutElement_Attributes
+---@field children nil | tts__UIElement[]
 
 ---@shape tts__UIVerticalLayoutElement_Attributes : tts__UIHorizontalOrVerticalLayoutElementBase_Attributes
 
