@@ -1,6 +1,7 @@
 ---@alias tts__PlayerRegularColor 'White' | 'Brown' | 'Red' | 'Orange' | 'Yellow' | 'Green' | 'Teal' | 'Blue' | 'Purple' | 'Pink'
 ---@alias tts__PlayerGameMasterColor 'Black'
 ---@alias tts__PlayerSpectatorColor 'Grey'
+---@alias tts__PlayerCameraMode 'ThirdPerson' | 'FirstPerson' | 'TopDown'
 
 ---@alias tts__PlayerHandColor tts__PlayerRegularColor | tts__PlayerGameMasterColor
 ---@alias tts__PlayerColor tts__PlayerHandColor | tts__PlayerSpectatorColor
@@ -66,6 +67,11 @@ function PlayerInstance.getPointerRotation() end
 -- Returns an array of objects currently selected by the player.
 ---@return tts__Object[]
 function PlayerInstance.getSelectedObjects() end
+
+--- sets the camera mode for the player.
+--- @param camera_mode tts__PlayerCameraMode
+--- @return boolean
+function PlayerInstance.setCameraMode(camera_mode) end
 
 ---@class tts__GlobalPlayer
 ---@field White tts__Player
